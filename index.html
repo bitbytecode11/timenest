@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+       
+        <div id="live-clock" class="live-clock"></div>
+    </header>
+
+    <main class="dashboard">
+        <div class="top-row">
+            <div class="left-column">
+                <section class="widget stopwatch-widget">
+                    <h2 class="widget-title purple">Stopwatch</h2>
+                    <div class="timer-display-large yellow" id="stopwatch-display">00:00:00.00</div>
+                    <div class="controls">
+                        <button id="sw-start" class="btn-start">Start</button>
+                        <button id="sw-stop" class="btn-stop">Stop</button>
+                        <button id="sw-reset" class="btn-reset">Reset</button>
+                    </div>
+                </section>
+                <section class="widget pomodoro-widget">
+                    <h2 class="widget-title">Pomodoro Timer</h2>
+                    <div class="pomo-display-container">
+                        <div class="pomo-display" id="pomodoro-display">
+                            <div class="pomo-label" id="pomo-label">Work Session</div>
+                            <div class="pomo-time" id="pomo-time">25:00</div>
+                        </div>
+                    </div>
+                    <div class="controls">
+                        <button id="pomo-start" class="btn-start">Start</button>
+                        <button id="pomo-pause" class="btn-stop">Pause</button>
+                        <button id="pomo-reset" class="btn-reset">Reset</button>
+                    </div>
+                </section>
+            </div>
+            
+            <section class="widget todo-widget">
+                <h2 class="widget-title">Daily To-Do List</h2>
+                <form id="todo-form">
+                    <input type="text" id="todo-input" placeholder="Add a new task..." required>
+                    <select id="todo-category">
+                        <option value="Normal">Normal</option>
+                        <option value="Important">Important</option>
+                        <option value="Assessment">Assessment</option>
+                        <option value="Exam">Exam</option>
+                    </select>
+                    <button type="submit" class="btn-add">Add Task</button>
+                </form>
+                <div class="todo-filters">
+                    <button class="filter-btn active" data-filter="All">All</button>
+                    <button class="filter-btn" data-filter="Active">Active</button>
+                    <button class="filter-btn" data-filter="Completed">Completed</button>
+                    <button class="filter-btn" data-filter="Important">Important</button>
+                    <button class="filter-btn" data-filter="Assessment">Assessment</button>
+                    <button class="filter-btn" data-filter="Exam">Exam</button>
+                </div>
+                <ul id="todo-list"></ul>
+                <p id="no-tasks-msg">No tasks found for this filter.</p>
+            </section>
+        </div>
+
+        <section class="widget calendar-widget" id="calendar-widget">
+            <h2 class="widget-title pink">Calendar & Events</h2>
+            <div class="calendar-header">
+                <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                <h3 id="month-year">July 2025</h3>
+                <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar-grid">
+                <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            </div>
+            <div class="calendar-days" id="calendar-days"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
