@@ -1,0 +1,85 @@
+/* --- Global Styles & Theme --- */
+:root {
+    --bg-dark: #1e2128;
+    --widget-bg: #2c313a;
+    --text-light: #e0e0e0;
+    --text-muted: #8c92a3;
+    --accent-blue: #3498db;
+    --accent-green: #2ecc71;
+    --accent-red: #e74c3c;
+    --accent-yellow: #f1c40f;
+    --accent-purple: #9b59b6;
+    --accent-pink: #e91e63;
+    --border-color: #404652;
+}
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-dark); color: var(--text-light); margin: 0; padding: 20px; }
+
+/* --- Header --- */
+.main-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 0 10px; }
+.user-id { font-size: 0.9em; color: var(--text-muted); }
+.live-clock { font-size: 1.2em; font-weight: bold; color: var(--accent-green); }
+
+/* --- Main Dashboard Layout --- */
+.dashboard { display: flex; flex-direction: column; gap: 20px; }
+.top-row { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: start; }
+.left-column { display: flex; flex-direction: column; gap: 20px; }
+
+/* --- General Widget Styling --- */
+.widget { background-color: var(--widget-bg); padding: 25px; border-radius: 16px; position: relative; }
+.widget-title { margin-top: 0; margin-bottom: 20px; text-align: center; font-weight: 600; }
+.purple { color: var(--accent-purple); }
+.pink { color: var(--accent-pink); }
+.yellow { color: var(--accent-yellow); }
+.controls { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+button { border: none; border-radius: 20px; padding: 10px 25px; font-size: 1em; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
+button:hover { transform: scale(1.05); }
+.btn-start { background-color: var(--accent-green); color: white; }
+.btn-stop { background-color: var(--accent-red); color: white; }
+.btn-reset { background-color: var(--accent-blue); color: white; }
+.btn-add { background-color: var(--accent-blue); color: white; flex-shrink: 0; }
+
+/* --- Pomodoro & Stopwatch Widgets --- */
+.timer-display-large { font-size: 3em; font-weight: bold; text-align: center; margin: 10px 0; font-family: 'Courier New', Courier, monospace; position: relative; z-index: 2; }
+.pomo-display-container { display: flex; justify-content: center; align-items: center; margin: 15px 0; }
+.pomo-display { width: 180px; height: 180px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: conic-gradient(var(--accent-yellow) 360deg, var(--border-color) 0deg); transition: background 0.5s; }
+.pomo-label { font-size: 1em; color: var(--text-muted); }
+.pomo-time { font-size: 2.5em; font-weight: bold; }
+.pomo-info { text-align: center; font-size: 0.9em; color: var(--text-muted); margin-top: 15px; }
+
+/* --- To-Do List Widget --- */
+#todo-form { display: flex; gap: 10px; margin-bottom: 20px; }
+#todo-input, #todo-category { background-color: var(--bg-dark); border: 1px solid var(--border-color); color: var(--text-light); padding: 10px; border-radius: 8px; }
+#todo-input { flex-grow: 1; }
+#todo-list { list-style: none; padding: 0; margin: 0; max-height: 350px; overflow-y: auto; }
+.todo-filters { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.filter-btn { background-color: var(--border-color); color: var(--text-light); padding: 5px 15px; font-size: 0.9em; border-radius: 15px; }
+.filter-btn.active { background-color: var(--accent-blue); }
+#todo-list li { display: flex; align-items: center; padding: 12px 5px; border-bottom: 1px solid var(--border-color); }
+#todo-list li.completed .task-text { text-decoration: line-through; color: var(--text-muted); }
+.task-checkbox { margin-right: 15px; width: 18px; height: 18px; cursor: pointer; }
+.task-category { font-size: 0.8em; padding: 3px 8px; border-radius: 10px; color: white; margin-left: auto; margin-right: 10px; }
+.task-delete { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1em; }
+.task-delete:hover { color: var(--accent-red); }
+#no-tasks-msg { text-align: center; color: var(--text-muted); display: none; }
+
+/* --- Calendar Widget --- */
+.calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.calendar-header h3 { margin: 0; }
+.calendar-header button { background: none; border: none; color: var(--text-light); font-size: 1.2em; cursor: pointer; }
+.calendar-grid, .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+.day-name { text-align: center; font-weight: bold; color: var(--text-muted); padding-bottom: 10px; }
+
+.day { position: relative; background-color: transparent; border: 1px solid transparent; border-radius: 8px; min-height: 100px; padding: 8px; transition: all 0.3s ease; overflow: hidden; }
+.day.current-month { background-color: var(--bg-dark); color: var(--text-light); cursor: pointer; }
+.day-number { font-weight: bold; }
+.day.today { border: 1px solid var(--accent-blue); }
+.day.day--active { position: absolute; transform: scale(1.1); background-color: var(--widget-bg); border: 1px solid var(--accent-blue); height: auto; min-height: 200px; width: 250px; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.5); overflow: visible; }
+.day-events { margin-top: 5px; max-height: 60px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
+.day--active .day-events { max-height: 120px; }
+.event-pill { display: flex; justify-content: space-between; align-items: center; font-size: 0.8em; padding: 3px 6px; border-radius: 4px; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.delete-event-btn { background: none; border: none; color: rgba(255,255,255,0.7); cursor: pointer; padding: 0 0 0 5px; }
+.delete-event-btn:hover { color: white; }
+.inline-event-form { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.inline-event-form input, .inline-event-form select { width: 100%; box-sizing: border-box; background-color: var(--bg-dark); border: 1px solid var(--border-color); color: var(--text-light); padding: 8px; border-radius: 4px; }
+.inline-controls { display: flex; gap: 8px; justify-content: flex-end; }
+.inline-controls button { padding: 5px 15px; font-size: 0.9em; }
